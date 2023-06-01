@@ -1,0 +1,12 @@
+---
+version: 1
+
+# Database configuration
+storage:
+  type: mongodb
+  config:
+    host: localhost
+    port: 27017
+    database: template
+    username: root
+    password: password
