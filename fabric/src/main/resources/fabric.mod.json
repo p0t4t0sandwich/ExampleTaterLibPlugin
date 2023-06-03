@@ -8,8 +8,8 @@
   "contact": {
     "repo": "https://github.com/p0t4t0sandwich/TaterSync"
   },
-  "license": "All-Rights-Reserved",
-  "icon": "assets/TaterSync/icon.png",
+  "license": "GPL-3",
+  "icon": "assets/Template/icon.png",
   "environment": "*",
   "entrypoints": {
     "server": [
