@@ -1,5 +1,8 @@
 package ca.sperrer.p0t4t0sandwich.template.velocity;
 
+import ca.sperrer.p0t4t0sandwich.template.common.Template;
+import ca.sperrer.p0t4t0sandwich.template.velocity.commands.TemplateCommand;
+import ca.sperrer.p0t4t0sandwich.template.velocity.listeners.VelocityEventListener;
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
@@ -13,6 +16,8 @@ import org.slf4j.Logger;
         version = "1.0.0"
 )
 public class VelocityMain {
+    public Template template;
+
     @Inject
     private ProxyServer server;
 
@@ -43,6 +48,20 @@ public class VelocityMain {
     public void onProxyInitialization(ProxyInitializeEvent event) {
         // Singleton instance
         instance = this;
-        this.logger.info("Sorry, Template isn't implemented for " + getServerType() + ".");
+
+        this.logger.info("LPPronouns is running on " + getServerType() + ".");
+
+        // Start LPPronouns
+        template = new Template("plugins", getLogger());
+        template.start();
+
+        // Register event listener
+        server.getEventManager().register(this, new VelocityEventListener());
+
+        // Register commands
+        server.getCommandManager().register("template", new TemplateCommand());
+
+        // Plugin enable message
+        this.logger.info("LPPronouns has been enabled!");
     }
 }

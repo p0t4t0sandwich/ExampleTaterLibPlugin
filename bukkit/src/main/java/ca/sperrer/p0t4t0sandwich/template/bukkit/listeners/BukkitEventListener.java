@@ -14,9 +14,10 @@ public class BukkitEventListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         runTaskAsync(() -> {
             try {
-                //
+                // Do stuff
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.err.println(e);
+                e.printStackTrace();
             }
         });
     }

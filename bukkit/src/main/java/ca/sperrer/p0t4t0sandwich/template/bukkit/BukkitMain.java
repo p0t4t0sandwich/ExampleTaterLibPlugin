@@ -1,5 +1,6 @@
 package ca.sperrer.p0t4t0sandwich.template.bukkit;
 
+import ca.sperrer.p0t4t0sandwich.template.bukkit.commands.TemplateCommand;
 import ca.sperrer.p0t4t0sandwich.template.bukkit.listeners.BukkitEventListener;
 import ca.sperrer.p0t4t0sandwich.template.common.Template;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -50,7 +51,7 @@ public class BukkitMain extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BukkitEventListener(), this);
 
         // Register commands
-//        Objects.requireNonNull(getCommand("tatersync")).setExecutor(new TestInvCommand());
+        getCommand("template").setExecutor(new TemplateCommand());
 
         // Plugin enable message
         getLogger().info("Template has been enabled!");

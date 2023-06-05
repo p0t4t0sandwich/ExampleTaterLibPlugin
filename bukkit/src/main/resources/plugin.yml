@@ -5,3 +5,8 @@ api-version: 1.13
 main: ca.sperrer.p0t4t0sandwich.template.bukkit.BukkitMain
 description: Template
 folia-supported: true
+commands:
+  template:
+    description: Template
+    usage: /template
+    permission: template

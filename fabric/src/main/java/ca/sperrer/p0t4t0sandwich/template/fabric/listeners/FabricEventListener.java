@@ -15,9 +15,10 @@ public class FabricEventListener implements ServerPlayConnectionEvents.Join {
     public void onPlayReady(ServerPlayNetworkHandler handler, PacketSender sender, MinecraftServer server) {
         runTaskAsync(() -> {
             try {
-//                mod.LPPronouns.pronounsData.refreshPronouns(mapPlayer(handler.getPlayer()));
+                // Do stuff
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.err.println(e);
+                e.printStackTrace();
             }
         });
     }

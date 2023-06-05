@@ -13,9 +13,10 @@ public class ForgeEventListener {
     public void onPlayerConnect(PlayerEvent.PlayerLoggedInEvent event) {
         runTaskAsync(() -> {
             try {
-//                mod.LPPronouns.pronounsData.refreshPronouns(mapPlayer((ServerPlayer) event.getEntity()));
+                // Do stuff
             } catch (Exception e) {
-                System.out.println(e.getMessage());
+                System.err.println(e);
+                e.printStackTrace();
             }
         });
     }
