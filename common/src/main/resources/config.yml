@@ -2,6 +2,7 @@
 version: 1
 
 # Database configuration
+# Supported storage types: mongodb, mysql
 storage:
   type: mongodb
   config:
