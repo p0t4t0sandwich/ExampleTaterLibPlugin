@@ -1,8 +1,9 @@
 name: Template
 version: '${version}'
 author: p0t4t0sandwich
-main: ca.sperrer.p0t4t0sandwich.template.bungee.BungeeMain
 description: Template
+main: ca.sperrer.p0t4t0sandwich.template.bungee.BungeeMain
+depends: []
 commands:
   template:
     description: Template

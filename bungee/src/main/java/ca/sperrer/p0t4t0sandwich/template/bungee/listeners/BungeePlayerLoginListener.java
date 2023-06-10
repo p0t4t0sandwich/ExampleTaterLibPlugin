@@ -7,7 +7,7 @@ import net.md_5.bungee.event.EventHandler;
 
 import static ca.sperrer.p0t4t0sandwich.template.common.Utils.runTaskAsync;
 
-public class BungeeEventListener implements Listener {
+public class BungeePlayerLoginListener implements Listener {
     BungeeMain plugin = BungeeMain.getInstance();
 
     @EventHandler

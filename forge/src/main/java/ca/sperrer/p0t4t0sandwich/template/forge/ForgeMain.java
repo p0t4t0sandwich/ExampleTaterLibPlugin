@@ -1,13 +1,13 @@
 package ca.sperrer.p0t4t0sandwich.template.forge;
 
 import ca.sperrer.p0t4t0sandwich.template.common.Template;
-import ca.sperrer.p0t4t0sandwich.template.forge.listeners.ForgeEventListener;
+import ca.sperrer.p0t4t0sandwich.template.forge.commands.ForgeTemplateCommand;
+import ca.sperrer.p0t4t0sandwich.template.forge.listeners.ForgePlayerLoginListener;
+import ca.sperrer.p0t4t0sandwich.template.forge.listeners.ForgeServerStartedListener;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
-
-import static ca.sperrer.p0t4t0sandwich.template.common.Utils.*;
 
 @Mod(ForgeMain.MODID)
 public class ForgeMain {
@@ -17,15 +17,7 @@ public class ForgeMain {
 
     // Get server type
     public String getServerType() {
-        if (isMagma()) {
-            return "Magma";
-        } else if (isMohist()) {
-            return "Mohist";
-        } else if (isArclight()) {
-            return "Arclight";
-        } else {
-            return "Forge";
-        }
+        return "Forge";
     }
 
     // Singleton instance
@@ -42,12 +34,12 @@ public class ForgeMain {
 
         logger.info("[Template]: Template is running on " + getServerType() + ".");
 
-        // Start Template
-        template = new Template("config", logger);
-        template.start();
+        // Register event listeners
+        MinecraftForge.EVENT_BUS.register(new ForgeServerStartedListener());
+        MinecraftForge.EVENT_BUS.register(new ForgePlayerLoginListener());
 
-        // Register event listener
-        MinecraftForge.EVENT_BUS.register(new ForgeEventListener());
+        // Register commands
+        MinecraftForge.EVENT_BUS.register(ForgeTemplateCommand.class);
 
         // Mod enable message
         logger.info("[Template]: Template has been enabled!");

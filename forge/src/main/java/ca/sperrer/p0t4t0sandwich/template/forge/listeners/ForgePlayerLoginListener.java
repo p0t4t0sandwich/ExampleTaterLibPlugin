@@ -6,7 +6,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import static ca.sperrer.p0t4t0sandwich.template.common.Utils.runTaskAsync;
 
-public class ForgeEventListener {
+public class ForgePlayerLoginListener {
     ForgeMain mod = ForgeMain.getInstance();
 
     @SubscribeEvent

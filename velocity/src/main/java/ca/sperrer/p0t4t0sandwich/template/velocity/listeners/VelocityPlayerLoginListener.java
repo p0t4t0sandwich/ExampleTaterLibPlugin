@@ -6,7 +6,7 @@ import com.velocitypowered.api.event.connection.LoginEvent;
 
 import static ca.sperrer.p0t4t0sandwich.template.common.Utils.runTaskAsync;
 
-public class VelocityEventListener {
+public class VelocityPlayerLoginListener {
     VelocityMain plugin = VelocityMain.getInstance();
 
     @Subscribe

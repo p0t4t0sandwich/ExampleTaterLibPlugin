@@ -8,7 +8,7 @@ import net.minecraft.server.network.ServerPlayNetworkHandler;
 
 import static ca.sperrer.p0t4t0sandwich.template.common.Utils.runTaskAsync;
 
-public class FabricEventListener implements ServerPlayConnectionEvents.Join {
+public class FabricPlayerLoginListener implements ServerPlayConnectionEvents.Join {
     FabricMain mod = FabricMain.getInstance();
 
     @Override

@@ -1,7 +1,6 @@
 package ca.sperrer.p0t4t0sandwich.template.bungee.commands;
 
 import ca.sperrer.p0t4t0sandwich.template.bungee.BungeeMain;
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.connection.ProxiedPlayer;
@@ -9,10 +8,10 @@ import net.md_5.bungee.api.plugin.Command;
 
 import static ca.sperrer.p0t4t0sandwich.template.common.Utils.runTaskAsync;
 
-public class TemplateCommand extends Command {
+public class BungeeTemplateCommand extends Command {
     private final BungeeMain plugin = BungeeMain.getInstance();
 
-    public TemplateCommand() {
+    public BungeeTemplateCommand() {
         super("template");
     }
 
@@ -24,9 +23,17 @@ public class TemplateCommand extends Command {
                 if ((sender instanceof ProxiedPlayer)) {
                     ProxiedPlayer player = (ProxiedPlayer) sender;
 
+                    // Permission check
+                    if (!player.hasPermission("template.command")) {
+                        player.sendMessage(new ComponentBuilder("§cYou do not have permission to use this command.").create());
+                        return;
+                    }
+
                     String text = "";
 
-                    player.sendMessage(new ComponentBuilder(text).color(ChatColor.GREEN).create());
+                    player.sendMessage(new ComponentBuilder(text).create());
+                } else {
+                    sender.sendMessage(new ComponentBuilder("§cYou must be a player to use this command.").create());
                 }
             } catch (Exception e) {
                 System.err.println(e);

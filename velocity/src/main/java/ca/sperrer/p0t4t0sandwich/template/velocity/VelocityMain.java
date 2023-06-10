@@ -1,8 +1,8 @@
 package ca.sperrer.p0t4t0sandwich.template.velocity;
 
 import ca.sperrer.p0t4t0sandwich.template.common.Template;
-import ca.sperrer.p0t4t0sandwich.template.velocity.commands.TemplateCommand;
-import ca.sperrer.p0t4t0sandwich.template.velocity.listeners.VelocityEventListener;
+import ca.sperrer.p0t4t0sandwich.template.velocity.commands.VelocityTemplateCommand;
+import ca.sperrer.p0t4t0sandwich.template.velocity.listeners.VelocityPlayerLoginListener;
 import com.google.inject.Inject;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
@@ -13,7 +13,11 @@ import org.slf4j.Logger;
 @Plugin(
         id = "template",
         name = "Template",
-        version = "1.0.0"
+        version = "1.0.0",
+        authors = "p0t4t0sandwich",
+        description = "Template",
+        url = "https://github.com/p0t4t0sandwich/Template",
+        dependencies = {}
 )
 public class VelocityMain {
     public Template template;
@@ -49,19 +53,19 @@ public class VelocityMain {
         // Singleton instance
         instance = this;
 
-        this.logger.info("LPPronouns is running on " + getServerType() + ".");
+        this.logger.info("Template is running on " + getServerType() + ".");
 
         // Start LPPronouns
         template = new Template("plugins", getLogger());
         template.start();
 
         // Register event listener
-        server.getEventManager().register(this, new VelocityEventListener());
+        server.getEventManager().register(this, new VelocityPlayerLoginListener());
 
         // Register commands
-        server.getCommandManager().register("template", new TemplateCommand());
+        server.getCommandManager().register("template", new VelocityTemplateCommand());
 
         // Plugin enable message
-        this.logger.info("LPPronouns has been enabled!");
+        this.logger.info("Template has been enabled!");
     }
 }

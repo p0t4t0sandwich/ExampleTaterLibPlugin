@@ -1,7 +1,7 @@
 package ca.sperrer.p0t4t0sandwich.template.bukkit;
 
-import ca.sperrer.p0t4t0sandwich.template.bukkit.commands.TemplateCommand;
-import ca.sperrer.p0t4t0sandwich.template.bukkit.listeners.BukkitEventListener;
+import ca.sperrer.p0t4t0sandwich.template.bukkit.commands.BukkitTemplateCommand;
+import ca.sperrer.p0t4t0sandwich.template.bukkit.listeners.BukkitPlayerLoginListener;
 import ca.sperrer.p0t4t0sandwich.template.common.Template;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -48,10 +48,10 @@ public class BukkitMain extends JavaPlugin {
         template.start();
 
         // Register event listener
-        getServer().getPluginManager().registerEvents(new BukkitEventListener(), this);
+        getServer().getPluginManager().registerEvents(new BukkitPlayerLoginListener(), this);
 
         // Register commands
-        getCommand("template").setExecutor(new TemplateCommand());
+        getCommand("template").setExecutor(new BukkitTemplateCommand());
 
         // Plugin enable message
         getLogger().info("Template has been enabled!");

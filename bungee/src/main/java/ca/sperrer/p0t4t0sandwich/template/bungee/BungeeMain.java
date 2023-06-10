@@ -1,7 +1,7 @@
 package ca.sperrer.p0t4t0sandwich.template.bungee;
 
-import ca.sperrer.p0t4t0sandwich.template.bungee.commands.TemplateCommand;
-import ca.sperrer.p0t4t0sandwich.template.bungee.listeners.BungeeEventListener;
+import ca.sperrer.p0t4t0sandwich.template.bungee.commands.BungeeTemplateCommand;
+import ca.sperrer.p0t4t0sandwich.template.bungee.listeners.BungeePlayerLoginListener;
 import ca.sperrer.p0t4t0sandwich.template.common.Template;
 import net.md_5.bungee.api.plugin.Plugin;
 
@@ -30,10 +30,10 @@ public class BungeeMain extends Plugin {
         template.start();
 
         // Register event listener
-        getProxy().getPluginManager().registerListener(this, new BungeeEventListener());
+        getProxy().getPluginManager().registerListener(this, new BungeePlayerLoginListener());
 
         // Register commands
-        getProxy().getPluginManager().registerCommand(this, new TemplateCommand());
+        getProxy().getPluginManager().registerCommand(this, new BungeeTemplateCommand());
 
         // Plugin enable message
         getLogger().info("Template has been enabled!");

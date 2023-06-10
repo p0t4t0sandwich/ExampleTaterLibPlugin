@@ -1,9 +1,9 @@
 name: Template
 version: '${version}'
 author: p0t4t0sandwich
-api-version: 1.13
-main: ca.sperrer.p0t4t0sandwich.template.bukkit.BukkitMain
 description: Template
+main: ca.sperrer.p0t4t0sandwich.template.bukkit.BukkitMain
+depend: []
 folia-supported: true
 commands:
   template:
