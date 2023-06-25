@@ -21,7 +21,7 @@
   "environment": "*",
   "entrypoints": {
     "server": [
-      "ca.sperrer.p0t4t0sandwich.template.fabric.FabricMain"
+      "dev.neuralnexus.template.fabric.FabricMain"
     ]
   },
   "mixins": [
@@ -30,10 +30,6 @@
   "depends": {
     "fabricloader": ">=0.9.0",
     "fabric-api-base": "*",
-    "fabric-command-api-v2": "*",
-    "fabric-lifecycle-events-v1": "*",
-    "fabric-networking-api-v1": "*",
-    "fabric": "*",
     "minecraft": ">=${minecraft_version}"
   }
 }
