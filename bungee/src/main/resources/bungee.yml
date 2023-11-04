@@ -1,11 +1,7 @@
-name: Template
+name: '${project_name}'
 version: '${version}'
-author: p0t4t0sandwich
-description: Template
-main: dev.neuralnexus.template.bungee.BungeeTemplatePlugin
-depends: []
-commands:
-  template:
-    description: Template
-    usage: /template
-    permission: template
+author: '${authors}'
+description: '${project_description}'
+main: '${group_id}.${project_id}.bungee.BungeePlugin'
+depends: [TaterLib]
+softdepends: [LuckPerms]

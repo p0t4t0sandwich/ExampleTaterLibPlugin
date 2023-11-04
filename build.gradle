@@ -6,10 +6,7 @@ defaultTasks('build')
 
 subprojects {
     apply(plugin: 'java')
-
-    group = 'ca.sperrer.p0t4t0sandwich'
-    version = '1.0.0'
-
+ 
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
 
@@ -20,10 +17,10 @@ subprojects {
     repositories {
         mavenCentral()
 
-        // Common
+        // Minecraft
         maven {
-            name = "jitpack"
-            url = "https://jitpack.io"
+            name = "minecraft-repo"
+            url = "https://libraries.minecraft.net/"
         }
 
         // Bukkit/Bungee
@@ -31,15 +28,27 @@ subprojects {
             name = "spigotmc-repo"
             url = "https://hub.spigotmc.org/nexus/content/repositories/snapshots/"
         }
-        maven {
-            name = "sonatype"
-            url = "https://oss.sonatype.org/content/groups/public/"
-        }
 
-        // Paper
+        // Paper/Velocity
         maven {
             name = "papermc-repo"
             url = "https://repo.papermc.io/repository/maven-public/"
         }
+
+        // NeuralNexus
+        maven {
+            name = "NeuralNexus"
+            url = "https://maven.neuralnexus.dev/releases"
+        }
+
+        // NeuralNexus Snapshots
+        maven {
+            name = "NeuralNexus Snapshots"
+            url = "https://maven.neuralnexus.dev/snapshots"
+        }
     }
+}
+
+clean {
+    delete('target')
 }

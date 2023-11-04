@@ -1,12 +1,8 @@
-name: Template
+name: '${project_name}'
 version: '${version}'
-author: p0t4t0sandwich
-description: Template
-main: dev.neuralnexus.template.bukkit.BukkitTemplatePlugin
-depend: []
+author: '${authors}'
+description: '${project_description}'
+main: '${group_id}.${project_id}.bukkit.BukkitPlugin'
+depends: [TaterLib]
+softdepends: [LuckPerms]
 folia-supported: true
-commands:
-  template:
-    description: Template
-    usage: /template
-    permission: template
