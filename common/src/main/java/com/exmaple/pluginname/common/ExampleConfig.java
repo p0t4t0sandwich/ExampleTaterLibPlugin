@@ -1,4 +1,4 @@
-package com.exmaple.exampletaterlibplugin.common;
+package com.exmaple.pluginname.common;
 
 import dev.neuralnexus.taterlib.lib.dejvokep.boostedyaml.YamlDocument;
 
@@ -9,7 +9,7 @@ import java.util.Objects;
 /**
  * Config handler.
  */
-public class ExampleTaterLibPluginConfig {
+public class ExampleConfig {
     private static YamlDocument config;
 
     /**
@@ -18,12 +18,12 @@ public class ExampleTaterLibPluginConfig {
      */
     public static void loadConfig(String configFolder) {
         try {
-            config = YamlDocument.create(new File("." + File.separator + configFolder + File.separator + Constants.PROJECT_NAME, Constants.PROJECT_ID + ".config.yml"),
-                    Objects.requireNonNull(ExampleTaterLibPlugin.class.getClassLoader().getResourceAsStream(Constants.PROJECT_ID + ".config.yml"))
+            config = YamlDocument.create(new File("." + File.separator + configFolder + File.separator + Example.Constants.PROJECT_NAME, Example.Constants.PROJECT_ID + ".config.yml"),
+                    Objects.requireNonNull(Example.class.getClassLoader().getResourceAsStream(Example.Constants.PROJECT_ID + ".config.yml"))
             );
             config.reload();
         } catch (IOException | NullPointerException e) {
-            ExampleTaterLibPlugin.logger.info("Failed to load " + Constants.PROJECT_ID + ".config.yml!\n" + e.getMessage());
+            Example.getLogger().info("Failed to load " + Example.Constants.PROJECT_ID + ".config.yml!\n" + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -42,7 +42,7 @@ public class ExampleTaterLibPluginConfig {
         try {
             config.save();
         } catch (IOException e) {
-            ExampleTaterLibPlugin.logger.info("Failed to save " + Constants.PROJECT_ID + ".config.ymll!\n" + e.getMessage());
+            Example.getLogger().info("Failed to save " + Example.Constants.PROJECT_ID + ".config.ymll!\n" + e.getMessage());
         }
     }
 }

@@ -1,17 +1,17 @@
-package com.exmaple.exampletaterlibplugin.neoforge;
+package com.exmaple.pluginname.neoforge;
 
+import com.exmaple.pluginname.common.Example;
 import com.mojang.logging.LogUtils;
 import dev.neuralnexus.taterlib.common.event.api.ServerEvents;
 import dev.neuralnexus.taterlib.neoforge.logger.NeoForgeLogger;
-import com.exmaple.exampletaterlibplugin.common.Constants;
-import com.exmaple.exampletaterlibplugin.common.ExampleTaterLibPluginPlugin;
+import com.exmaple.pluginname.common.ExamplePlugin;
 import net.neoforged.fml.common.Mod;
 
 /**
  * NeoForge entry point.
  */
-@Mod(Constants.PROJECT_ID)
-public class NeoForgePlugin implements ExampleTaterLibPluginPlugin {
+@Mod(Example.Constants.PROJECT_ID)
+public class NeoForgePlugin implements ExamplePlugin {
     public NeoForgePlugin() {
         ServerEvents.STOPPED.register(event -> pluginStop());
         pluginStart(this, new NeoForgeLogger(LogUtils.getLogger()));
