@@ -50,8 +50,8 @@ ExampleTaterLibPlugin supports: Bukkit, BungeeCord, Fabric, Forge, Sponge, and V
 
 ## Commands and Permissions
 
-| Command                                   | Permission                      | Description             |
-|-------------------------------------------|---------------------------------|-------------------------|
-| `/exampletaterlibplugin <version/reload>` | `exampletaterlibplugin.command` | Root TaterUtils Command |
+| Command    | Permission                | Description     |
+|------------|---------------------------|-----------------|
+| `/example` | `example.command.example` | Example Command |
 
 ## Release Notes

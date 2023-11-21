@@ -1,60 +1,59 @@
 package com.exmaple.pluginname.common;
 
+import com.exmaple.pluginname.common.api.ExampleAPI;
+import com.exmaple.pluginname.common.api.ExampleAPIProvider;
+import com.exmaple.pluginname.common.listeners.CommandListener;
+
 import dev.neuralnexus.taterlib.common.api.TaterAPIProvider;
+import dev.neuralnexus.taterlib.common.event.api.CommandEvents;
 import dev.neuralnexus.taterlib.common.logger.AbstractLogger;
 
-/**
- * Main class for the plugin.
- */
+/** Main class for the plugin. */
 public class Example {
-    private static final Example instance = new Example();
-    private Object plugin;
-    private AbstractLogger logger;
     private static boolean STARTED = false;
     private static boolean RELOADED = false;
+    private static Object plugin;
+    private static AbstractLogger logger;
 
     /**
-     * Getter for the singleton instance of the class.
-     * @return The singleton instance
+     * Get the plugin
+     *
+     * @return The plugin
      */
-    public static Example getInstance() {
-        return instance;
+    public static Object getPlugin() {
+        return plugin;
     }
 
     /**
      * Set the plugin
+     *
      * @param plugin The plugin
      */
     private static void setPlugin(Object plugin) {
-        instance.plugin = plugin;
-    }
-
-    /**
-     * Get the plugin
-     * @return The plugin
-     */
-    public static Object getPlugin() {
-        return instance.plugin;
-    }
-
-    /**
-     * Set the logger
-     * @param logger The logger
-     */
-    private static void setLogger(AbstractLogger logger) {
-        instance.logger = logger;
+        Example.plugin = plugin;
     }
 
     /**
      * Get the logger
+     *
      * @return The logger
      */
     public static AbstractLogger getLogger() {
-        return instance.logger;
+        return logger;
+    }
+
+    /**
+     * Set the logger
+     *
+     * @param logger The logger
+     */
+    private static void setLogger(AbstractLogger logger) {
+        Example.logger = logger;
     }
 
     /**
      * Start
+     *
      * @param plugin The plugin
      * @param logger The logger
      */
@@ -72,25 +71,21 @@ public class Example {
         STARTED = true;
 
         if (!RELOADED) {
-            // Register events
+            // Register listeners
+            // CommandEvents.REGISTER_COMMAND.register(CommandListener::onRegisterCommand);
+            CommandEvents.REGISTER_BRIGADIER_COMMAND.register(
+                    CommandListener::onRegisterBrigadierCommand);
         }
+
+        ExampleAPIProvider.register(new ExampleAPI("someData"));
 
         logger.info(Constants.PROJECT_NAME + " has been started!");
     }
 
-    /**
-     * Start
-     */
-    public static void start() {
-        start(instance.plugin, instance.logger);
-    }
-
-    /**
-     * Stop
-     */
+    /** Stop */
     public static void stop() {
         if (!STARTED) {
-            instance.logger.info(Constants.PROJECT_NAME + " has already stopped!");
+            logger.info(Constants.PROJECT_NAME + " has already stopped!");
             return;
         }
         STARTED = false;
@@ -98,15 +93,13 @@ public class Example {
         // Remove references to objects
         ExampleConfig.unloadConfig();
 
-        instance.logger.info(Constants.PROJECT_NAME + " has been stopped!");
+        logger.info(Constants.PROJECT_NAME + " has been stopped!");
     }
 
-    /**
-     * Reload
-     */
+    /** Reload */
     public static void reload() {
         if (!STARTED) {
-            instance.logger.info(Constants.PROJECT_NAME + " has not been started!");
+            logger.info(Constants.PROJECT_NAME + " has not been started!");
             return;
         }
         RELOADED = true;
@@ -115,14 +108,12 @@ public class Example {
         stop();
 
         // Start
-        start();
+        start(plugin, logger);
 
-        instance.logger.info(Constants.PROJECT_NAME + " has been reloaded!");
+        logger.info(Constants.PROJECT_NAME + " has been reloaded!");
     }
 
-    /**
-     * Constants used throughout the plugin.
-     */
+    /** Constants used throughout the plugin. */
     public static class Constants {
         public static final String PROJECT_NAME = "Example";
         public static final String PROJECT_ID = "example";
