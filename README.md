@@ -10,9 +10,9 @@ Template repo for cross-API Minecraft coding projects
 
 ## How to use
 
-1. Refactor each `com.exmaple.pluginname.platform` package to your desired package name
-2. Refactor each `com.exmaple.pluginname.common.*Example*.java` class to your desired plugin name
-3. Edit the `com.exmaple.pluginname.common.Example$Constants` file and fill in all the variables
+1. Refactor each `com.exmaple.pluginname.{platform}` package to your desired package name
+2. Refactor each `com.exmaple.pluginname.*Example*.java` class to your desired plugin name
+3. Edit the `com.exmaple.pluginname.Example$Constants` file and fill in all the variables
 4. Edit the main `gradle.properties` file and fill in all the variables
 5. Edit the variables in `./build.sh` to match
 
@@ -33,7 +33,6 @@ Link to our support: [Discord](https://discord.example.com)
 ## Dependencies
 
 - [TaterLib](https://github.com/p0t4t0sandwich/TaterLib) - Required on all platforms
-- [FabricAPI](https://modrinth.com/mod/fabric-api) - Required on Fabric
 
 ### Optional Dependencies
 
