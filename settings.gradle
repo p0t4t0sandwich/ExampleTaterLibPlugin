@@ -22,12 +22,6 @@ pluginManagement {
             url 'https://maven.neoforged.net/releases'
         }
 
-        // Parchment Mappings
-        maven {
-            name = 'ParchmentMC'
-            url = 'https://maven.parchmentmc.org'
-        }
-
         // Sponge
         maven {
             name = 'Sponge'
@@ -42,11 +36,10 @@ pluginManagement {
 }
 
 plugins {
-    // Automatic toolchain provisioning
     id("org.gradle.toolchains.foojay-resolver-convention") version("0.5.0")
 }
 
-rootProject.name = 'ExampleTaterLibPlugin'
+rootProject.name = 'example'
 
 include(
         'platforms:bukkit',
@@ -55,6 +48,7 @@ include(
         'platforms:fabric',
         'platforms:forge',
         'platforms:neoforge',
-        'platforms:sponge',
+        'platforms:sponge7',
+        'platforms:sponge8',
         'platforms:velocity'
 )

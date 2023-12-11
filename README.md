@@ -12,9 +12,8 @@ Template repo for cross-API Minecraft coding projects
 
 1. Refactor each `com.exmaple.pluginname.{platform}` package to your desired package name
 2. Refactor each `com.exmaple.pluginname.*Example*.java` class to your desired plugin name
-3. Edit the `com.exmaple.pluginname.Example$Constants` file and fill in all the variables
+3. Edit the `com.example.pluginname.Example$Constants` file and fill in all the variables
 4. Edit the main `gradle.properties` file and fill in all the variables
-5. Edit the variables in `./build.sh` to match
 
 Link to our support: [Discord](https://discord.example.com)
 
@@ -38,14 +37,10 @@ Link to our support: [Discord](https://discord.example.com)
 
 - [LuckPerms](https://luckperms.net/) - For permissions/prefix/suffix support
 
-### Compatibility Cheatsheet
+### Compatibility
 
-ExampleTaterLibPlugin supports: Bukkit, BungeeCord, Fabric, Forge, Sponge, and Velocity
-
-| Server type          | Versions | Jar Name                                     |
-|----------------------|----------|----------------------------------------------|
-| All 1.13 and up      | 1.13+    | `ExampleTaterLibPlugin-<version>.jar`        |
-| All 1.12.2 and below | 1.12.2-  | `ExampleTaterLibPlugin-legacy-<version>.jar` |
+- Platforms: Bukkit, BungeeCord, Fabric, Forge, Sponge, and Velocity
+- Versions: Any version that TaterLib supports
 
 ## Commands and Permissions
 

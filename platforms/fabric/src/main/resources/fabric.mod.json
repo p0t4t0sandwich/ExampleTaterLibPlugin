@@ -13,7 +13,7 @@
     "repo": "${repo_url}"
   },
   "license": "${license}",
-  "icon": "assets/${project_name}/icon.png",
+  "icon": "./${project_name}.png",
   "environment": "*",
   "entrypoints": {
     "server": [

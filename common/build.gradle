@@ -10,6 +10,12 @@ dependencies {
     compileOnly('com.mojang:brigadier:1.0.18')
 }
 
+tasks.withType(ProcessResources).configureEach {
+    filesMatching(['plugin.yml', 'bungee.yml']) {
+        expand project.properties
+    }
+}
+
 shadowJar {
     dependencies {
         include(dependency("${group_id}:${project_id}:${version}"))
