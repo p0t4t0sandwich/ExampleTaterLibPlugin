@@ -14,6 +14,8 @@ Template repo for cross-API Minecraft coding projects
 2. Refactor each `com.exmaple.pluginname.*Example*.java` class to your desired plugin name
 3. Edit the `com.example.pluginname.Example$Constants` file and fill in all the variables
 4. Edit the main `gradle.properties` file and fill in all the variables
+5. Run `./gradlew taterBuild` (or `gradlew.bat taterBuild` on Windows) to build the plugin, this will include
+   entrypoints for all platforms.
 
 Link to our support: [Discord](https://discord.example.com)
 
