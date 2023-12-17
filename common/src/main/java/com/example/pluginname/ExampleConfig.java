@@ -1,6 +1,6 @@
 package com.example.pluginname;
 
-import dev.neuralnexus.taterlib.lib.dejvokep.boostedyaml.YamlDocument;
+import dev.dejvokep.boostedyaml.YamlDocument;
 
 import java.io.File;
 import java.io.IOException;
