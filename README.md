@@ -10,6 +10,9 @@ Template repo for cross-API Minecraft coding projects
 
 ## How to use
 
+If you don't need any platform specific code, use this
+template [here](https://github.com/p0t4t0sandwich/ExampleTaterLibPlugin/tree/simple)
+
 1. Refactor each `com.exmaple.pluginname.{platform}` package to your desired package name
 2. Refactor each `com.exmaple.pluginname.*Example*.java` class to your desired plugin name
 3. Edit the `com.example.pluginname.Example$Constants` file and fill in all the variables

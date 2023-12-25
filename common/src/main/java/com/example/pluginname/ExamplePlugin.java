@@ -9,14 +9,13 @@ import dev.neuralnexus.taterlib.plugin.Plugin;
 public interface ExamplePlugin extends Plugin {
     /** Starts the plugin. */
     default void pluginStart(Object plugin, AbstractLogger logger) {
-        Example.getLogger()
-                .info(
-                        Example.Constants.PROJECT_NAME
-                                + " is running on "
-                                + TaterAPIProvider.serverType()
-                                + " "
-                                + TaterAPIProvider.minecraftVersion()
-                                + "!");
+        logger.info(
+                Example.Constants.PROJECT_NAME
+                        + " is running on "
+                        + TaterAPIProvider.serverType()
+                        + " "
+                        + TaterAPIProvider.minecraftVersion()
+                        + "!");
         PluginEvents.DISABLED.register(event -> pluginStop());
         Example.start(plugin, logger);
     }
