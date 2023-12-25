@@ -10,11 +10,10 @@ Template repo for cross-API Minecraft coding projects
 
 ## How to use
 
-1. Refactor each `com.exmaple.pluginname.{platform}` package to your desired package name
-2. Refactor each `com.exmaple.pluginname.*Example*.java` class to your desired plugin name
-3. Edit the `com.example.pluginname.Example$Constants` file and fill in all the variables
-4. Edit the main `gradle.properties` file and fill in all the variables
-5. Run `./gradlew taterBuild` (or `gradlew.bat taterBuild` on Windows) to build the plugin, this will include
+1. Refactor each `com.exmaple.pluginname.*Example*.java` class to your desired plugin name
+2. Edit the `com.example.example.Example$Constants` file and fill in all the variables
+3. Edit the main `gradle.properties` file and fill in all the variables
+4. Run `./gradlew build` (or `gradlew.bat build` on Windows) to build the plugin, this will include
    entrypoints for all platforms.
 
 Link to our support: [Discord](https://discord.example.com)
@@ -34,10 +33,6 @@ Link to our support: [Discord](https://discord.example.com)
 ## Dependencies
 
 - [TaterLib](https://github.com/p0t4t0sandwich/TaterLib) - Required on all platforms
-
-### Optional Dependencies
-
-- [LuckPerms](https://luckperms.net/) - For permissions/prefix/suffix support
 
 ### Compatibility
 

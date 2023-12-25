@@ -40,15 +40,3 @@ plugins {
 }
 
 rootProject.name = 'example'
-
-include(
-        'platforms:bukkit',
-        'platforms:bungee',
-        'common',
-        'platforms:fabric',
-        'platforms:forge',
-        'platforms:neoforge',
-        'platforms:sponge7',
-        'platforms:sponge8',
-        'platforms:velocity'
-)
