@@ -5,14 +5,14 @@ import com.example.example.ExamplePlugin;
 
 import dev.neuralnexus.taterlib.logger.LoggerAdapter;
 
-import net.fabricmc.api.DedicatedServerModInitializer;
+import net.fabricmc.api.ModInitializer;
 
 /** Fabric entry point. */
-public class FabricPlugin implements DedicatedServerModInitializer, ExamplePlugin {
+public class FabricPlugin implements ModInitializer, ExamplePlugin {
     public FabricPlugin() {
         pluginStart(this, new LoggerAdapter(Example.Constants.PROJECT_NAME));
     }
 
     @Override
-    public void onInitializeServer() {}
+    public void onInitialize() {}
 }

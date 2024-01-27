@@ -7,6 +7,16 @@ import dev.neuralnexus.taterlib.plugin.Plugin;
 
 /** The main plugin interface. */
 public interface ExamplePlugin extends Plugin {
+    @Override
+    default String getName() {
+        return Example.Constants.PROJECT_NAME;
+    }
+
+    @Override
+    default String getId() {
+        return Example.Constants.PROJECT_ID;
+    }
+
     /** Starts the plugin. */
     default void pluginStart(Object plugin, AbstractLogger logger) {
         logger.info(

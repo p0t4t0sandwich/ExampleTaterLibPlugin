@@ -4,7 +4,7 @@ import com.example.example.api.ExampleAPIProvider;
 
 import dev.neuralnexus.taterlib.Utils;
 import dev.neuralnexus.taterlib.command.Command;
-import dev.neuralnexus.taterlib.command.Sender;
+import dev.neuralnexus.taterlib.command.CommandSender;
 import dev.neuralnexus.taterlib.player.Player;
 
 /** Example Command. */
@@ -37,21 +37,17 @@ public class ExampleCommand implements Command {
     }
 
     @Override
-    public boolean execute(Sender sender, String label, String[] args) {
+    public boolean execute(CommandSender sender, String label, String[] args) {
         if (!sender.hasPermission(getPermission())) {
             sender.sendMessage(
                     Utils.substituteSectionSign(
                             "&cYou do not have permission to execute this command!"));
             return true;
         }
-        if (sender instanceof Player) {
+        if (!(sender instanceof Player)) {
             sender.sendMessage(
                     Utils.substituteSectionSign(
-                            "&cThis command can only be executed by the console!"));
-            return true;
-        }
-        if (args.length != 0) {
-            sender.sendMessage(Utils.substituteSectionSign("&cUsage: " + getUsage()));
+                            "&cThis command can only be executed by a player!"));
             return true;
         }
 

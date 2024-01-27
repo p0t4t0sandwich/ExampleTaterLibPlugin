@@ -6,7 +6,7 @@ import static com.mojang.brigadier.builder.RequiredArgumentBuilder.argument;
 
 import dev.neuralnexus.taterlib.api.TaterAPIProvider;
 import dev.neuralnexus.taterlib.command.Command;
-import dev.neuralnexus.taterlib.command.Sender;
+import dev.neuralnexus.taterlib.command.CommandSender;
 import dev.neuralnexus.taterlib.event.command.BrigadierCommandRegisterEvent;
 
 /** Helper class for brigadier commands (prevents ClassNotFound exceptions). */
@@ -21,7 +21,7 @@ public class BrigadierHelperClass {
                 literal(command.getName())
                         .requires(
                                 source -> {
-                                    Sender sender = event.getSender(source);
+                                    CommandSender sender = event.getSender(source);
                                     return sender.hasPermission(
                                             // Checks if not dedicated, or if LuckPerms is installed
                                             // then sets the permission level to 0, otherwise 4
@@ -37,7 +37,7 @@ public class BrigadierHelperClass {
                                                 context -> {
                                                     try {
                                                         Object source = context.getSource();
-                                                        Sender sender = event.getSender(source);
+                                                        CommandSender sender = event.getSender(source);
 
                                                         String[] args =
                                                                 context.getArgument(
