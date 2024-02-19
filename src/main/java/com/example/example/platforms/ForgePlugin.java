@@ -16,6 +16,6 @@ import net.minecraftforge.fml.common.Mod;
         acceptableRemoteVersions = "*")
 public class ForgePlugin implements ExamplePlugin {
     public ForgePlugin() {
-        pluginStart(this, new LoggerAdapter(Example.Constants.PROJECT_NAME));
+        pluginStart(this, null, null, new LoggerAdapter(Example.Constants.PROJECT_NAME));
     }
 }

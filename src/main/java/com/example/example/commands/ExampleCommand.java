@@ -12,7 +12,7 @@ public class ExampleCommand implements Command {
     private String name = "example";
 
     @Override
-    public String getName() {
+    public String name() {
         return name;
     }
 
@@ -22,23 +22,23 @@ public class ExampleCommand implements Command {
     }
 
     @Override
-    public String getDescription() {
+    public String description() {
         return "Example command";
     }
 
     @Override
-    public String getUsage() {
+    public String usage() {
         return "/example";
     }
 
     @Override
-    public String getPermission() {
+    public String permission() {
         return "example.command.example";
     }
 
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
-        if (!sender.hasPermission(getPermission())) {
+        if (!sender.hasPermission(permission())) {
             sender.sendMessage(
                     Utils.substituteSectionSign(
                             "&cYou do not have permission to execute this command!"));

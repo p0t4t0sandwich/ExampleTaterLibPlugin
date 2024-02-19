@@ -5,23 +5,37 @@ import com.example.example.api.ExampleAPIProvider;
 import com.example.example.listeners.CommandListener;
 
 import dev.neuralnexus.taterlib.api.TaterAPIProvider;
+import dev.neuralnexus.taterlib.api.info.ServerType;
+import dev.neuralnexus.taterlib.bstats.MetricsAdapter;
 import dev.neuralnexus.taterlib.event.api.CommandEvents;
 import dev.neuralnexus.taterlib.logger.AbstractLogger;
 
 /** Main class for the plugin. */
 public class Example {
+    private static final Example instance = new Example();
     private static boolean STARTED = false;
     private static boolean RELOADED = false;
-    private static Object plugin;
-    private static AbstractLogger logger;
+    private Object plugin;
+    private Object pluginServer;
+    private Object pluginLogger;
+    private AbstractLogger logger;
+
+    /**
+     * Getter for the singleton instance of the class.
+     *
+     * @return The singleton instance
+     */
+    public static Example instance() {
+        return instance;
+    }
 
     /**
      * Get the plugin
      *
      * @return The plugin
      */
-    public static Object getPlugin() {
-        return plugin;
+    public static Object plugin() {
+        return instance.plugin;
     }
 
     /**
@@ -30,7 +44,25 @@ public class Example {
      * @param plugin The plugin
      */
     private static void setPlugin(Object plugin) {
-        Example.plugin = plugin;
+        instance.plugin = plugin;
+    }
+
+    /**
+     * Set the plugin server
+     *
+     * @param pluginServer The plugin server
+     */
+    private static void setPluginServer(Object pluginServer) {
+        instance.pluginServer = pluginServer;
+    }
+
+    /**
+     * Set the plugin logger
+     *
+     * @param pluginLogger The plugin logger
+     */
+    private static void setPluginLogger(Object pluginLogger) {
+        instance.pluginLogger = pluginLogger;
     }
 
     /**
@@ -38,8 +70,8 @@ public class Example {
      *
      * @return The logger
      */
-    public static AbstractLogger getLogger() {
-        return logger;
+    public static AbstractLogger logger() {
+        return instance.logger;
     }
 
     /**
@@ -48,24 +80,45 @@ public class Example {
      * @param logger The logger
      */
     private static void setLogger(AbstractLogger logger) {
-        Example.logger = logger;
+        instance.logger = logger;
     }
 
     /**
      * Start
      *
      * @param plugin The plugin
+     * @param pluginServer The plugin server
+     * @param pluginLogger The plugin logger
      * @param logger The logger
      */
-    public static void start(Object plugin, AbstractLogger logger) {
+    public static void start(
+            Object plugin, Object pluginServer, Object pluginLogger, AbstractLogger logger) {
+        if (pluginServer != null) {
+            setPluginServer(pluginServer);
+        }
+        if (pluginLogger != null) {
+            setPluginLogger(pluginLogger);
+        }
         setPlugin(plugin);
         setLogger(logger);
 
+        // Set up bStats
+        MetricsAdapter.setupMetrics(
+                plugin,
+                pluginServer,
+                pluginLogger,
+                ImmutableMap.<ServerType, Integer>builder()
+                        .put(ServerType.BUKKIT, 21038)
+                        .put(ServerType.BUNGEECORD, 21039)
+                        .put(ServerType.SPONGE, 21040)
+                        .put(ServerType.VELOCITY, 21041)
+                        .build());
+
         // Config
-        ExampleConfig.loadConfig(TaterAPIProvider.get().configFolder());
+        ExampleConfig.loadConfig(TaterAPIProvider.serverType().dataFolders().configFolder());
 
         if (STARTED) {
-            logger.info(Constants.PROJECT_NAME + " has already started!");
+            instance.logger.info(Constants.PROJECT_NAME + " has already started!");
             return;
         }
         STARTED = true;
@@ -79,13 +132,13 @@ public class Example {
 
         ExampleAPIProvider.register(new ExampleAPI("someData"));
 
-        logger.info(Constants.PROJECT_NAME + " has been started!");
+        instance.logger.info(Constants.PROJECT_NAME + " has been started!");
     }
 
     /** Stop */
     public static void stop() {
         if (!STARTED) {
-            logger.info(Constants.PROJECT_NAME + " has already stopped!");
+            instance.logger.info(Constants.PROJECT_NAME + " has already stopped!");
             return;
         }
         STARTED = false;
@@ -93,13 +146,18 @@ public class Example {
         // Remove references to objects
         ExampleConfig.unloadConfig();
 
-        logger.info(Constants.PROJECT_NAME + " has been stopped!");
+        instance.logger.info(Constants.PROJECT_NAME + " has been stopped!");
+    }
+
+    /** Start */
+    public static void start() {
+        start(instance.plugin, instance.pluginServer, instance.pluginLogger, instance.logger);
     }
 
     /** Reload */
     public static void reload() {
         if (!STARTED) {
-            logger.info(Constants.PROJECT_NAME + " has not been started!");
+            instance.logger.info(Constants.PROJECT_NAME + " has not been started!");
             return;
         }
         RELOADED = true;
@@ -108,9 +166,9 @@ public class Example {
         stop();
 
         // Start
-        start(plugin, logger);
+        start();
 
-        logger.info(Constants.PROJECT_NAME + " has been reloaded!");
+        instance.logger.info(Constants.PROJECT_NAME + " has been reloaded!");
     }
 
     /** Constants used throughout the plugin. */

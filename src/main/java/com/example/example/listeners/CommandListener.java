@@ -15,7 +15,7 @@ public class CommandListener {
      * @param event The event.
      */
     public static void onRegisterCommand(CommandRegisterEvent event) {
-        //        event.registerCommand(Example.getPlugin(), new ExampleCommand(), "alias1",
+        //        event.registerCommand(Example.plugin(), new ExampleCommand(), "alias1",
         // "alias2");
     }
 
@@ -27,6 +27,6 @@ public class CommandListener {
     public static void onRegisterBrigadierCommand(BrigadierCommandRegisterEvent event) {
         Command command = new ExampleCommand();
         BrigadierHelperClass.onRegisterBrigadierCommand(
-                event, command, Example.getPlugin(), command.getName(), "ex", "alias2");
+                event, command, Example.plugin(), command.name(), "ex", "alias2");
     }
 }

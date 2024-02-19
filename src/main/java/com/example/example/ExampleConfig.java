@@ -33,7 +33,7 @@ public class ExampleConfig {
                                                     Example.Constants.PROJECT_ID + ".config.yml")));
             config.reload();
         } catch (IOException | NullPointerException e) {
-            Example.getLogger()
+            Example.logger()
                     .info(
                             "Failed to load "
                                     + Example.Constants.PROJECT_ID
@@ -53,7 +53,7 @@ public class ExampleConfig {
         try {
             config.save();
         } catch (IOException e) {
-            Example.getLogger()
+            Example.logger()
                     .info(
                             "Failed to save "
                                     + Example.Constants.PROJECT_ID
