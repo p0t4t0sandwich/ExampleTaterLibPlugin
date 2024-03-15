@@ -5,8 +5,6 @@ import com.example.example.api.ExampleAPIProvider;
 import com.example.example.listeners.CommandListener;
 
 import dev.neuralnexus.taterlib.api.TaterAPIProvider;
-import dev.neuralnexus.taterlib.api.info.ServerType;
-import dev.neuralnexus.taterlib.bstats.MetricsAdapter;
 import dev.neuralnexus.taterlib.event.api.CommandEvents;
 import dev.neuralnexus.taterlib.logger.AbstractLogger;
 
@@ -103,16 +101,16 @@ public class Example {
         setLogger(logger);
 
         // Set up bStats
-        MetricsAdapter.setupMetrics(
-                plugin,
-                pluginServer,
-                pluginLogger,
-                ImmutableMap.<ServerType, Integer>builder()
-                        .put(ServerType.BUKKIT, 21038)
-                        .put(ServerType.BUNGEECORD, 21039)
-                        .put(ServerType.SPONGE, 21040)
-                        .put(ServerType.VELOCITY, 21041)
-                        .build());
+//        MetricsAdapter.setupMetrics(
+//                plugin,
+//                pluginServer,
+//                pluginLogger,
+//                ImmutableMap.<ServerType, Integer>builder()
+//                        .put(ServerType.BUKKIT, yourIdHere)
+//                        .put(ServerType.BUNGEECORD, yourIdHere)
+//                        .put(ServerType.SPONGE, yourIdHere)
+//                        .put(ServerType.VELOCITY, yourIdHere)
+//                        .build());
 
         // Config
         ExampleConfig.loadConfig(TaterAPIProvider.serverType().dataFolders().configFolder());

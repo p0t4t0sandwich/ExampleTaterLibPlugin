@@ -29,6 +29,9 @@ dependencies {
     // Brigadier
     compileOnly('com.mojang:brigadier:1.0.18')
 
+    // You can rely on dependencies that TaterLib bundles into it's uber Jar
+    // Keep in mind that you'll have to relocate them if you want to use them (see below)
+
     // Google Guava
     compileOnly('com.google.guava:guava:33.0.0-jre')
 }
@@ -55,7 +58,7 @@ shadowJar {
     // Goolge Guava
     relocate('com.google.common', "dev.neuralnexus.taterlib.lib.google.common")
     relocate('com.google.thirdparty', "dev.neuralnexus.taterlib.lib.google.thirdparty")
-    
+
     relocate('dev.dejvokep', "${group_id}.${project_id}.lib.dejvokep")
     relocate('org.intellij', "${group_id}.${project_id}.lib.intellij")
     relocate('org.jetbrains', "${group_id}.${project_id}.lib.jetbrains")
